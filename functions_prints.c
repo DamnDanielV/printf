@@ -25,7 +25,7 @@ int print_str(va_list arguments)
 	char *string = va_arg(arguments, char *);
 
 	for (i = 0; string[i] != '\0'; i++)
-		_putchar(*string);
+		_putchar(string[i]);
 	return (i);
 }
 /**
@@ -98,6 +98,7 @@ int (*match_parameter(char s))(va_list)
 		{'s', print_str},
 		{'d', print_number},
 		{'i', print_number},
+		{'u', printu},
 		{'\0', NULL}
 	};
 	int i = 0;
@@ -109,4 +110,26 @@ int (*match_parameter(char s))(va_list)
 		i++;
 	}
 	return (NULL);
+}
+
+int printu(va_list arguments)
+{
+	unsigned int x = va_arg(arguments, unsigned int);
+	(x == 0) ? _putchar('0') :rpu(x);
+	return (0);
+}
+
+int  rpu(unsigned int x)
+{
+	char c;
+	char *ctable = "01234567890ABCDEF";
+	int BASE = 10;
+
+	if (x)
+	{
+		c = ctable[x % BASE];
+		rpu(x/BASE);
+		_putchar(c);
+	}
+	return (0);
 }
