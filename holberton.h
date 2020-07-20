@@ -19,10 +19,11 @@ typedef struct struct_specifier
 
 int _printf(const char *format, ...);
 int (*match_parameter(char s))(va_list);
-int print_char(va_list vl);
-int print_str(va_list vl);
-int print_number(va_list vl);
+int print_char(va_list arguments);
+int print_str(va_list arguments);
+int print_number(va_list arguments);
 int c_n(char);
 int _putchar(char c);
-
+int printu(va_list arguments);
+int rpu(unsigned int x);
 #endif
