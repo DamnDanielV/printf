@@ -1,50 +1,41 @@
 #include "holberton.h"
-#include <limits.h>
-#include <stdarg.h>
-#include <stdlib.h>
-#include<stdio.h>
 /**
- * _printf - own basic printf() function
- * @format: directives
- * Return: number of characters printed
+ * _printf - own printf function
+ * @format: the format specifier string
+ *
+ * Return: number of characters print
  */
 int _printf(const char *format, ...)
 {
-	unsigned int i = 0, j = 0, con_spa = 1;
-
 	va_list arguments;
-
-	str_speci list_spe[] = {
-		{'c', print_char},
-		{'s', print_string},
-		{'%', print_percent},
-		{'i', print_integer},
-		{'d', print_integer},
-		{'\0', NULL}
-	};
+	int (*func)(va_list), i = 0, c = 0;
 
 	va_start(arguments, format);
 
-	i = 0;
+	if (format == '\0')
+		return (-1);
 	while (format[i] != '\0')
 	{
-		j = 0;
-		while (list_spe[j].c != '\0')
+		if (format[i] == '%' && format[i + 1] != '\0')
 		{
-			if (format[i] == '%')
-			{
-				while (format[i + 1] != '\0' && format[i + 1] == ' ')
-					con_spa++;
-				i = i + con_spa;
-				if (list_spe[j].c == format[i])
-					list_spe[j].func(arguments);
-					i += 1;
-			}
-			j++;
+			i++;
+			func = match_parameter(format[i]);
+			if (func == NULL)
+				c += c_n(format[i]);
+			else
+				c += func(arguments);
 		}
-		putchar(format[i]);
+		else if (format[i] == '%' && format[i + 1] == '\0')
+		{
+			return (-1);
+		}
+		else
+		{
+			_putchar(format[i]);
+		c++;
+		}
 		i++;
 	}
 	va_end(arguments);
-	return (i);
+	return (c);
 }
