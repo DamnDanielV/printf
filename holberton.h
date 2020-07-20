@@ -1,23 +1,28 @@
-#ifndef _HOLBERTON_
-#define _HOLBERTON_
+#ifndef _HOLBERTON_H_
+#define _HOLBERTON_H_
+
+#include <limits.h>
+#include <stdio.h>
 #include <stdarg.h>
-#include<stdio.h>
+#include <string.h>
+
 /**
  * struct struct_specifier - struct to functions print
- * @c: specifier
- * @func: pointer to the specifier function
+ * @ch: specifier
+ * @fu_pr: pointer to the specifier function
  */
 typedef struct struct_specifier
 {
-	char c;
-	void (*func)(va_list);
+	char ch;
+	int (*fu_pr)(va_list);
 } str_speci;
 
-int _putchar(char c);
 int _printf(const char *format, ...);
-void print_string(va_list arguments);
-void print_char(va_list arguments);
-void print_percent(va_list arguments);
-void print_integer(va_list arguments);
+int (*match_parameter(char s))(va_list);
+int print_char(va_list vl);
+int print_str(va_list vl);
+int print_number(va_list vl);
+int c_n(char);
+int _putchar(char c);
 
 #endif
