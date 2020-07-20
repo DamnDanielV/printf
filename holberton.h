@@ -22,7 +22,7 @@ int (*match_parameter(char s))(va_list);
 int print_char(va_list arguments);
 int print_str(va_list arguments);
 int print_number(va_list arguments);
-int c_n(char);
+int c_n(const char *, int *i, va_list arguments);
 int _putchar(char c);
 int printu(va_list arguments);
 int rpu(unsigned int x);

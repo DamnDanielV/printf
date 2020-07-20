@@ -1,4 +1,5 @@
 #include "holberton.h"
+
 /**
  * _printf - own printf function
  * @format: the format specifier string
@@ -8,33 +9,26 @@
 int _printf(const char *format, ...)
 {
 	va_list arguments;
-	int (*func)(va_list), i = 0, c = 0;
+	int i = 0, c = 0;
 
 	va_start(arguments, format);
 
 	if (format == '\0')
 		return (-1);
+
 	while (format[i] != '\0')
 	{
 		if (format[i] == '%' && format[i + 1] != '\0')
 		{
-			i++;
-			func = match_parameter(format[i]);
-			if (func == NULL)
-				c += c_n(format[i]);
-			else
-				c += func(arguments);
+			c += c_n(format, &i, arguments);
 		}
-		else if (format[i] == '%' && format[i + 1] == '\0')
-		{
-			return (-1);
-			}
 		else
 		{
 			_putchar(format[i]);
-		c++;
+			c++;
+			(i)++;
 		}
-		i++;
+
 	}
 	va_end(arguments);
 	return (c);
@@ -42,21 +36,45 @@ int _printf(const char *format, ...)
 
 /**
  * c_n - print number
- * @ch: number to be print
+ * @format: format to print
+ *@i: index of the format string
+ *@arguments: va_list with the arguments to print
  * Return: number of chars printed
  */
-int c_n(char ch)
+int c_n(const char *format, int *i, va_list arguments)
 {
-	switch (ch)
-	{
-	case '%':
-		_putchar(ch);
-		return (1);
-	case ' ':
-		_putchar(ch);
-		return (1);
-	}
-	return (0);
+	int (*func)(va_list);
+	int c = 0;
+
+		func = match_parameter(format[*i + 1]);
+		if (func == NULL && format[*i + 1] != '%' &&
+		    format[*i + 1] != ' ')
+		{
+			_putchar(format[*i]);
+			c++;
+			(*i)++;
+		}
+		else if (func == NULL && format[*i + 1] == '%')
+		{
+			_putchar('%');
+			c++;
+			(*i) += 2;
+		}
+		else if (func == NULL && format[*i + 1] == ' ')
+		{
+			func = match_parameter(format[*i + 2]);
+			if (func)
+			{
+				c += func(arguments);
+				(*i) += 3;
+			}
+		}
+		else
+		{
+			c += func(arguments);
+			(*i) += 2;
+		}
+	return (c);
 }
 
 /**
