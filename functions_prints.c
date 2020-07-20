@@ -1,51 +1,39 @@
 #include "holberton.h"
-#include <stdarg.h>
-#include <stdlib.h>
-
 /**
- * print_char - writes char
- * @arguments: input char list to print
- * Return: number of chars wrote
+ * print_char - print char with write
+ * @arguments: char to be print
+ *
+ * Return: one
  */
-void print_char(va_list arguments)
+int print_char(va_list arguments)
 {
 	char c;
 
 	c = va_arg(arguments, int);
 	_putchar(c);
+	return (1);
 }
 /**
- * print_string - writes string
- * @arguments: input list string to print
- * Return: number of chars wrote
+ * print_str - print string with write
+ * @arguments: char to be print
+ *
+ * Return: number of chars printed
  */
-void print_string(va_list arguments)
+int print_str(va_list arguments)
 {
-	int i = 0;
+	int i;
 	char *string = va_arg(arguments, char *);
 
-	while (string[i] != '\0')
-	{
+	for (i = 0; string[i] != '\0'; i++)
 		_putchar(*string);
-		i++;
-	}
+	return (i);
 }
- /**
- * print_percent - writes %
- * @arguments: input list string to print
- * Return: number of chars wrote
+/**
+ * print_number - print number
+ * @arguments: number to be print
+ * Return: number of chars printed
  */
-void print_percent(va_list arguments)
-{
-	(void)arguments;
-	_putchar('%');
-}
- /**
- * print_integer - writes integers
- * @arguments: input list string to print
- * Return: number of chars wrote
- */
-void print_integer(va_list arguments)
+int print_number(va_list arguments)
 {
 	int aux, size = 1, a, b, pu_ch = 0;
 	int n = va_arg(arguments, int);
@@ -78,4 +66,47 @@ void print_integer(va_list arguments)
 		}
 	}
 	_putchar('0' + b);
+	return (pu_ch);
+}
+/**
+ * c_n - print number
+ * @ch: number to be print
+ * Return: number of chars printed
+ */
+int c_n(char ch)
+{
+	switch (ch)
+	{
+	case '%':
+		_putchar(ch);
+		return (1);
+	case ' ':
+		_putchar(ch);
+		return (1);
+	}
+	return (0);
+}
+/**
+ * match_parameter - find a parameter
+ * @s: parameter
+ * Return: NULL or to function
+ */
+int (*match_parameter(char s))(va_list)
+{
+	str_speci options[] = {
+		{'c', print_char},
+		{'s', print_str},
+		{'d', print_number},
+		{'i', print_number},
+		{'\0', NULL}
+	};
+	int i = 0;
+
+	while (options[i].ch != '\0')
+	{
+		if (options[i].ch == s)
+			return (options[i].fu_pr);
+		i++;
+	}
+	return (NULL);
 }
