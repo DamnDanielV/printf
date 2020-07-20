@@ -1,33 +1,5 @@
 #include "holberton.h"
-/**
- * print_char - print char with write
- * @arguments: char to be print
- *
- * Return: one
- */
-int print_char(va_list arguments)
-{
-	unsigned char c;
 
-	c = va_arg(arguments, int);
-	_putchar(c);
-	return (1);
-}
-/**
- * print_str - print string with write
- * @arguments: char to be print
- *
- * Return: number of chars printed
- */
-int print_str(va_list arguments)
-{
-	int i;
-	char *string = va_arg(arguments, char *);
-
-	for (i = 0; string[i] != '\0'; i++)
-		_putchar(string[i]);
-	return (i);
-}
 /**
  * print_number - print number
  * @arguments: number to be print
@@ -69,67 +41,38 @@ int print_number(va_list arguments)
 	return (pu_ch);
 }
 /**
- * c_n - print number
- * @ch: number to be print
- * Return: number of chars printed
+ *printu- prints unsigned int
+ *@arguments: a struct of vargs to print
+ *
+ *Return: int with the numbers of characters printed.
  */
-int c_n(char ch)
-{
-	switch (ch)
-	{
-	case '%':
-		_putchar(ch);
-		return (1);
-	case ' ':
-		_putchar(ch);
-		return (1);
-	}
-	return (0);
-}
-/**
- * match_parameter - find a parameter
- * @s: parameter
- * Return: NULL or to function
- */
-int (*match_parameter(char s))(va_list)
-{
-	str_speci options[] = {
-		{'c', print_char},
-		{'s', print_str},
-		{'d', print_number},
-		{'i', print_number},
-		{'u', printu},
-		{'\0', NULL}
-	};
-	int i = 0;
-
-	while (options[i].ch != '\0')
-	{
-		if (options[i].ch == s)
-			return (options[i].fu_pr);
-		i++;
-	}
-	return (NULL);
-}
-
 int printu(va_list arguments)
 {
+	int i;
 	unsigned int x = va_arg(arguments, unsigned int);
-	(x == 0) ? _putchar('0') :rpu(x);
-	return (0);
-}
 
+	i = (x == 0) ? _putchar('0') : rpu(x);
+	return (i);
+}
+/**
+ *rpu - recursive printing unsigned int.
+ *@x: unsigned int number to print
+ *
+ *Return: Number of  printed numbers.
+ */
 int  rpu(unsigned int x)
 {
 	char c;
+	int i = 0;
 	char *ctable = "01234567890ABCDEF";
 	int BASE = 10;
 
 	if (x)
 	{
 		c = ctable[x % BASE];
-		rpu(x/BASE);
+		rpu(x / BASE);
+		i++;
 		_putchar(c);
 	}
-	return (0);
+	return (i);
 }
