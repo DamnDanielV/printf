@@ -22,6 +22,11 @@ int _printf(const char *format, ...)
 		{
 			c += c_n(format, &i, arguments);
 		}
+		else if (format[i] == '%' && format[i + 1] == '\0')
+		{
+			return(-1);
+		}
+
 		else
 		{
 			_putchar(format[i]);
