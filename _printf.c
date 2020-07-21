@@ -31,7 +31,6 @@ int _printf(const char *format, ...)
 
 	}
 	va_end(arguments);
-	printf("%d", c);
 	return (c);
 }
 
