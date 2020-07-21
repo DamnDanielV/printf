@@ -26,12 +26,12 @@ int _printf(const char *format, ...)
 		{
 			_putchar(format[i]);
 			c++;
-			(i)++;
+			i++;
 		}
 
 	}
 	va_end(arguments);
-	return (c);
+	return (c - 1);
 }
 
 /**
@@ -97,5 +97,5 @@ int (*match_parameter(char s))(va_list)
 			return (options[i].fu_pr);
 		i++;
 	}
-	return (NULL);
+	return (0);
 }
