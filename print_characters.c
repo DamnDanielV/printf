@@ -27,8 +27,6 @@ int print_str(va_list arguments)
 {
 	int i;
 	char *string = va_arg(arguments, char *);
-	if( string >= INT_MAX || string <= INT_MIN)
-		sting = NULL;;
 
 	for (i = 0; string[i] != '\0'; i++)
 		_putchar(string[i]);
