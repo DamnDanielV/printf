@@ -25,5 +25,5 @@ int print_number(va_list arguments);
 int c_n(const char *, int *i, va_list arguments);
 int _putchar(char c);
 int printu(va_list arguments);
-int rpu(unsigned int x);
+int rpu(int x);
 #endif
