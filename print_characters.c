@@ -9,7 +9,7 @@ int print_char(va_list arguments)
 {
 	unsigned int c;
 
-	c = va_arg(arguments, int);
+	c = va_arg(arguments, unsigned int);
 	if (c >= INT_MAX)
 	{
 		return (0);
@@ -27,6 +27,8 @@ int print_str(va_list arguments)
 {
 	int i;
 	char *string = va_arg(arguments, char *);
+	if( string == INT_MAX || string == INT_MIN)
+		return (-1);
 
 	for (i = 0; string[i] != '\0'; i++)
 		_putchar(string[i]);
