@@ -92,8 +92,8 @@ int (*match_parameter(char s))(va_list)
 	str_speci options[] = {
 		{'c', print_char},
 		{'s', print_str},
-		{'d', print_number},
-		{'i', print_number},
+		{'d', printu},
+		{'i', printu},
 		{'\0', NULL},
 	};
 	int i = 0;
