@@ -31,7 +31,7 @@ int _printf(const char *format, ...)
 
 	}
 	va_end(arguments);
-	return (c - 1);
+	return (c);
 }
 
 /**
