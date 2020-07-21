@@ -27,4 +27,5 @@ int _putchar(char c);
 int printu(va_list arguments);
 int rpu(int x);
 int print_unsigned(va_list arguments);
+int print_ocunsi(va_list arguments);
 #endif
