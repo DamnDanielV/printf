@@ -95,6 +95,7 @@ int (*match_parameter(char s))(va_list)
 		{'d', print_number},
 		{'i', print_number},
 		{'u', print_unsigned},
+		{'o', print_ocunsi}
 		{'\0', NULL},
 	};
 	int i = 0;
