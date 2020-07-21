@@ -32,3 +32,34 @@ int print_str(va_list arguments)
 	}
 	return (i);
 }
+
+/**
+ * printS - print string with constrains
+ * @arguments: char to be print
+ *
+ * Return: number of chars printed
+ */
+int printS(va_list arguments)
+{
+	int i = 1;
+	char *string = va_arg(arguments, char *);
+	char *nil = "\\x";
+
+	while (*string)
+	{
+		if((0 < *string) && (*string < 32 || *string >= 127))
+		{
+			
+			write(1, nil, 2);
+			
+			string++;
+		}
+		else
+		{
+		write(1, string, 1);
+		string++;
+		i++;
+		}
+	}
+	return (i);
+}
