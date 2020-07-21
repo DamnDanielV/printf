@@ -10,10 +10,6 @@ int print_char(va_list arguments)
 	unsigned int c;
 
 	c = va_arg(arguments, unsigned int);
-	if (c >= INT_MAX)
-	{
-		return (0);
-	}
 	_putchar(c);
 	return (1);
 }
@@ -25,10 +21,14 @@ int print_char(va_list arguments)
  */
 int print_str(va_list arguments)
 {
-	int i;
+	int i = 0;
 	char *string = va_arg(arguments, char *);
 
-	for (i = 0; string[i] != '\0'; i++)
-		_putchar(string[i]);
+	while (*string)
+	{
+		write(1, string, 1);
+		string++;
+		i++;
+	}
 	return (i);
 }
