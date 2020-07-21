@@ -7,10 +7,10 @@
  */
 int print_char(va_list arguments)
 {
-	int c;
+	unsigned int c;
 
 	c = va_arg(arguments, int);
-	if (c >= INT_MAX || c <= 0)
+	if (c >= INT_MAX)
 	{
 		return (0);
 	}
