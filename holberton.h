@@ -26,4 +26,5 @@ int c_n(const char *, int *i, va_list arguments);
 int _putchar(char c);
 int printu(va_list arguments);
 int rpu(int x);
+int print_unsigned(va_list arguments);
 #endif

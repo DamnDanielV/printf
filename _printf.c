@@ -94,6 +94,7 @@ int (*match_parameter(char s))(va_list)
 		{'s', print_str},
 		{'d', print_number},
 		{'i', print_number},
+		{'u', print_unsigned},
 		{'\0', NULL},
 	};
 	int i = 0;
