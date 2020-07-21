@@ -7,9 +7,13 @@
  */
 int print_char(va_list arguments)
 {
-	unsigned int c;
+	int c;
 
-	c = va_arg(arguments, unsigned int);
+	c = va_arg(arguments, int);
+	if (c >= INT_MAX || c <= 0)
+	{
+		return (0);
+	}
 	_putchar(c);
 	return (1);
 }

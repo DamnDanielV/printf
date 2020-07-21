@@ -7,7 +7,7 @@
  */
 int print_number(va_list arguments)
 {
-	int aux, size = 1, a, b, pu_ch = 0;
+	int aux, size = 1, a, b, pu_ch = 1;
 	int n = va_arg(arguments, int);
 
 	b = n % 10;
@@ -49,7 +49,7 @@ int print_number(va_list arguments)
 int printu(va_list arguments)
 {
 	int i;
-	unsigned int x = va_arg(arguments, unsigned int);
+	 int x = va_arg(arguments, int);
 
 	i = (x == 0) ? _putchar('0') : rpu(x);
 	return (i);
@@ -60,17 +60,25 @@ int printu(va_list arguments)
  *
  *Return: Number of  printed numbers.
  */
-int  rpu(unsigned int x)
+int  rpu(int x)
 {
 	char c;
-	int i = 0;
+	int i = 0, sign = 0;
 	char *ctable = "01234567890ABCDEF";
 	int BASE = 10;
 
+	if (x < 0)
+	{
+		sign = 1;
+		x = (-1) * x;
+		i++;
+	}
+	if (sign == 1)
+		_putchar('-');
 	if (x)
 	{
 		c = ctable[x % BASE];
-		rpu(x / BASE);
+		i += rpu(x / BASE);
 		i++;
 		_putchar(c);
 	}
