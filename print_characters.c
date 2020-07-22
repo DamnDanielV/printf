@@ -27,6 +27,12 @@ int print_str(va_list arguments)
 {
 	int i = 0;
 	char *string = va_arg(arguments, char *);
+	if (string == NULL)
+	{
+		write(1, "(null)", 6);
+		exit(6);
+	}
+
 
 	for (i = 0; string[i] != '\0'; i++)
 		_putchar(string[i]);
@@ -46,8 +52,10 @@ int printS(va_list arguments)
 	char *nil = "\\x";
 
 	if (string == NULL)
-		return (-1);
-
+	{
+		write(1, "(null)", 6);
+		exit(6);
+	}
 			while (*string)
 			{
 				if ((*string > 0) && (*string < 32 ||
@@ -60,9 +68,8 @@ int printS(va_list arguments)
 						write(1, &"0", 1);
 						i++;
 					}
-					rpuu(*string, 16, 1);
+					i += (rpuu(*string, 16, 1));
 					string++;
-					i++;
 				}
 				else
 				{

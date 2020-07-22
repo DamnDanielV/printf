@@ -52,6 +52,9 @@ int printb(va_list arguments)
 	int i = 0;
 	unsigned int x = va_arg(arguments, unsigned int);
 
+	if (x >= INT_MAX)
+		x = INT_MAX;
+
 	i += ((x == 0) ? _putchar('0') : rpu(x, 2));
 	return (i);
 }
