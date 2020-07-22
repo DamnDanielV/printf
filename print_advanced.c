@@ -15,9 +15,7 @@ int print_unsigned(va_list arguments)
 	while (i < 10)
 	{
 		if (n / aux != 0)
-		{
 			c += _putchar(((n / aux) % 10) + '0');
-		}
 		aux = aux / 10;
 		i++;
 	}
