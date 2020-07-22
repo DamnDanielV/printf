@@ -47,7 +47,7 @@ int rpuu(unsigned int x, int BASE, int flag)
 
 	if (flag == 0)
 		ctable = y;
-	else
+	else if (flag == 1)
 		ctable = z;
 
 
