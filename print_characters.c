@@ -45,14 +45,23 @@ int printS(va_list arguments)
 	char *string = va_arg(arguments, char *);
 	char *nil = "\\x";
 
+	if(string == NULL)
+		return
+
 	while (*string)
 	{
 		if((0 < *string) && (*string < 32 || *string >= 127))
 		{
-			
 			write(1, nil, 2);
-			
+			i += 2;
+			if (*string <= 15)
+			{
+				write(1,&"0",1);
+				i++;
+			}
+			rpuu(*string,16,1);
 			string++;
+			i++;
 		}
 		else
 		{
