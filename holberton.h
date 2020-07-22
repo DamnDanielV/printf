@@ -39,4 +39,5 @@ int rpup(unsigned long int x, int BASE);
 int printHEX(va_list arguments);
 int printr(va_list arguments);
 int rpr(char *string);
+int printR(va_list arguments);
 #endif
