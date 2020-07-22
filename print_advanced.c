@@ -99,6 +99,6 @@ int printp(va_list arguments)
 
 	_putchar('0');
 	_putchar('x');
-	i += ((addr == 0) ? _putchar('0') : rpup(addr, 16));
+	i += ((addr == 0) ? write(1, "(null)", 6) : rpup(addr, 16));
 	return (i);
 }

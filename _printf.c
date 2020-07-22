@@ -101,6 +101,8 @@ int (*match_parameter(char s))(va_list)
 		{'x', printhex},
 		{'X', printHEX},
 		{'p', printp},
+		{'r', printr},
+		{'R', printR},
 		{'\0', NULL},
 	};
 	int i = 0;
