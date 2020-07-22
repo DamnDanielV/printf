@@ -2,8 +2,7 @@
 
 /**
  * printR - function that encodes a string into 1337.
- *@s: the string to encode
- *
+ *@arguments: (va_list arguments): the string to encode
  *Return: pointer to the encoded array
  */
 int printR(va_list arguments)
@@ -12,6 +11,7 @@ int printR(va_list arguments)
 	char c[] = {"aAbBcCdDeEfFgGhHiIjJkKlLmMnNoOpPqQrRsStTuUvVwWxXyYzZ"};
 	char num[] = {"nNoOpPqQrRsStTuUvVwWxXyYzZaAbBcCdDeEfFgGhHiIjJkKlLmMnN"};
 	char *s = va_arg(arguments, char *);
+
 	if (s == NULL)
 	{
 		write(1, NULL, 6);
