@@ -11,9 +11,8 @@ int print_char(va_list arguments)
 
 	c = va_arg(arguments, unsigned int);
 	if (c >= INT_MAX)
-	{
 		return (0);
-	}
+
 	_putchar(c);
 	return (1);
 }
@@ -27,6 +26,7 @@ int print_str(va_list arguments)
 {
 	int i = 0;
 	char *string = va_arg(arguments, char *);
+
 	if (string == NULL)
 	{
 		write(1, "(null)", 6);
