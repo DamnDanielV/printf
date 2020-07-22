@@ -19,13 +19,9 @@ int _printf(const char *format, ...)
 	while (format[i] != '\0')
 	{
 		if (format[i] == '%' && format[i + 1] != '\0')
-		{
 			c += c_n(format, &i, arguments);
-		}
 		else if (format[i] == '%' && format[i + 1] == '\0')
-		{
 			return (-1);
-		}
 
 		else
 		{
