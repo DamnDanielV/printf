@@ -83,3 +83,36 @@ int rpup(unsigned long int x, int BASE)
 	}
 	return (i);
 }
+
+int printr(va_list arguments)
+{
+	int i = 0;
+	char *string = va_arg(arguments, char *);
+
+	if (string == NULL)
+	{
+		write(1,"(null)", 6);
+		return (6);
+	}
+	i += ( rpr(string));
+	return (i);
+}
+
+int rpr(char *string)
+{
+	int i = 0;
+	if(*string == '\0')
+	{;
+		return(i);
+	}
+
+	string++;
+	i += (rpr(string));
+	string--;
+	_putchar(*string);
+	i++;
+
+	return(i);
+
+}
+

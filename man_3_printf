@@ -1,0 +1,59 @@
+.TH man page _printf "21 07 2020"
+.SH NAME
+_printf \- own basic version of printf function "1.0" "Holberton School"
+.SH SYNOPSIS
+.B #include "holberton.h"
+
+.B int _printf(const char \fI*format\fR\fB, ...)\fR
+
+.SH DESCRIPTION
+\fB_printf()\fR produces outputs according to the selected format as shown below by writing to the standard stdout.
+
+Produces output under the control of a string format that is specified in a subsequent argument
+
+.SH RETURN VALUE
+if the operation is successful, _printf returns the number of characters printed(excluding the null byte used to end output to strings).
+_printf will return a negative value if an error is encountered.
+
+.SH THE CONVERSION SPECIFIER
+The conversion specifier indicates the kind of data to be printed.  These conversion specifiers and their meanings are:
+.TP
+\fBd\fR, \fBi\fR
+The int argument is converted to decimal notation.
+.TP
+\fBc\fR
+The  int  argument is  converted  to  an  unsigned  char,  and the resulting character is written.
+.TP
+\fBs\fR
+The const char * argument is expected to  be  a  pointer  to  an
+array  of character type (pointer to a string). Characters from the array  are  written  up  to(but  not  including)  a  terminating null byte ('\0').
+.TP
+\fB%\fR
+A '%' is written.  No  argument  is  converted. The complete conversion specification is '%%'.
+.TP
+\fBo, u, x, X\fR
+The unsigned int argument is converted to unsigned octal (o), unsigned decimal (u), or unsigned hexadecimal (x and X) notation.  The letters abcdef are used for x conversions; the letters ABCDEF are used for X conversions.
+.TP
+\fBp\fR
+The void * pointer argument is printed in hexadecimal
+.TP
+\fBb\fR
+The unsigned int argument is converted to binary.
+.TP
+\fBS\fR
+(Not in C99, but in SUSv2.)  Synonym for lc.  Don't use.
+.SH SEE ALSO
+.B printf(3)
+.SH BUGS
+No known bugs.
+.SH EXAMPLE
+
+#include "holberton.h"
+
+_printf("%s\n", "Hello Holberton!");
+
+Result "Hello Holberton!"
+
+
+.SH AUTHOR
+Daniel Villalba, Sebastian Orozco.
