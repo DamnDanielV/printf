@@ -5,6 +5,7 @@
 #include <stdio.h>
 #include <stdarg.h>
 #include <string.h>
+#include <unistd.h>
 
 /**
  * struct struct_specifier - struct to functions print
@@ -24,8 +25,15 @@ int print_str(va_list arguments);
 int print_number(va_list arguments);
 int c_n(const char *, int *i, va_list arguments);
 int _putchar(char c);
-int printu(va_list arguments);
-int rpu(int x);
+int printd(va_list arguments);
 int print_unsigned(va_list arguments);
+int printS(va_list arguments);
+int printb(va_list arguments);
 int print_ocunsi(va_list arguments);
+int printhex(va_list arguments);
+int printp(va_list arguments);
+int rpuu(unsigned int x, int BASE, int flag);
+int rpu(int x, int BASE);
+int rpup(unsigned long int x, int BASE);
+int printHEX(va_list arguments);
 #endif

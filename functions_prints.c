@@ -40,47 +40,18 @@ int print_number(va_list arguments)
 	_putchar('0' + b);
 	return (pu_ch);
 }
+
 /**
- *printu- prints unsigned int
+ *printb- prints octal int
  *@arguments: a struct of vargs to print
  *
  *Return: int with the numbers of characters printed.
  */
-int printu(va_list arguments)
+int printb(va_list arguments)
 {
-	int i;
-	 int x = va_arg(arguments, int);
+	int i = 0;
+	unsigned int x = va_arg(arguments, unsigned int);
 
-	i = (x == 0) ? _putchar('0') : rpu(x);
-	return (i);
-}
-/**
- *rpu - recursive printing unsigned int.
- *@x: unsigned int number to print
- *
- *Return: Number of  printed numbers.
- */
-int  rpu(int x)
-{
-	char c;
-	int i = 0, sign = 0;
-	char *ctable = "01234567890ABCDEF";
-	int BASE = 10;
-
-	if (x < 0)
-	{
-		sign = 1;
-		x = (-1) * x;
-		i++;
-	}
-	if (sign == 1)
-		_putchar('-');
-	if (x)
-	{
-		c = ctable[x % BASE];
-		i += rpu(x / BASE);
-		i++;
-		_putchar(c);
-	}
+	i += ((x == 0) ? _putchar('0') : rpu(x, 2));
 	return (i);
 }

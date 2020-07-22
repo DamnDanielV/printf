@@ -25,10 +25,51 @@ int print_char(va_list arguments)
  */
 int print_str(va_list arguments)
 {
-	int i;
+	int i = 0;
 	char *string = va_arg(arguments, char *);
 
 	for (i = 0; string[i] != '\0'; i++)
 		_putchar(string[i]);
+	return (i);
+}
+
+/**
+ * printS - print string with constrains
+ * @arguments: char to be print
+ *
+ * Return: number of chars printed
+ */
+int printS(va_list arguments)
+{
+	int i = 0;
+	char *string = va_arg(arguments, char *);
+	char *nil = "\\x";
+
+	if (string == NULL)
+		return (-1);
+
+			while (*string)
+			{
+				if ((*string > 0) && (*string < 32 ||
+						     *string >= 127))
+				{
+					write(1, nil, 2);
+					i += 2;
+					if (*string <= 15)
+					{
+						write(1, &"0", 1);
+						i++;
+					}
+					rpuu(*string, 16, 1);
+					string++;
+					i++;
+				}
+				else
+				{
+					write(1, string, 1);
+					string++;
+					i++;
+				}
+			}
 	return (i);
 }

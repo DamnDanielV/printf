@@ -52,3 +52,53 @@ int print_ocunsi(va_list arguments)
 	}
 	return (ch);
 }
+
+/**
+ *printhex- prints hexa unsigned in lowercase
+ *@arguments: a struct of vargs to print
+ *
+ *Return: int with the numbers of characters printed.
+ */
+int printhex(va_list arguments)
+{
+	int i = 0;
+	unsigned int x = va_arg(arguments, unsigned int);
+
+	i += ((x == 0) ? _putchar('0') : rpuu(x, 16, 0));
+	return (i);
+
+}
+
+/**
+ *printHEX- prints hexa unsigned in uppercase
+ *@arguments: a struct of vargs to print
+ *
+ *Return: int with the numbers of characters printed.
+ */
+
+int printHEX(va_list arguments)
+{
+	int i = 0;
+	unsigned int x = va_arg(arguments, unsigned int);
+
+	i += ((x == 0) ? _putchar('0') : rpuu(x, 16, 1));
+	return (i);
+
+}
+/**
+ *printp- prints adress
+ *@arguments: a struct of vargs to print
+ *
+ *Return: int with the numbers of characters printed.
+ */
+
+int printp(va_list arguments)
+{
+	int i = 0;
+	unsigned long int addr = va_arg(arguments, unsigned long int);
+
+	_putchar('0');
+	_putchar('x');
+	i += ((addr == 0) ? _putchar('0') : rpup(addr, 16));
+	return (i);
+}
