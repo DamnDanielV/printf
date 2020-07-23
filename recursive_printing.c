@@ -24,7 +24,7 @@ int rpu(int x, int BASE)
 	{
 		c = ctable[x % BASE];
 		i++;
-		i += rpu(x / BASE, BASE);
+		i += (rpu(x / BASE, BASE));
 		_putchar(c);
 	}
 	return (i);
@@ -84,35 +84,32 @@ int rpup(unsigned long int x, int BASE)
 	return (i);
 }
 
-int printr(va_list arguments)
+/**
+ *rpub - recursive printing binary usigned int.
+ *@x: unsigned int number to print
+ *@BASE: base for the printing
+ *Return: Number of  printed numbers.
+*/
+int rpub(long int  x, int BASE)
 {
-	int i = 0;
-	char *string = va_arg(arguments, char *);
+	char c;
+	int i = 0, sign = 0;
+	char *ctable = "0123456789ABCDEF";
 
-	if (string == NULL)
+	if (x < 0)
 	{
-		write(1,"(null)", 6);
-		return (6);
+		sign = 1;
+		x = (-1) * x;
+		i++;
 	}
-	i += ( rpr(string));
+	if (sign == 1)
+		_putchar('1');
+	if (x)
+	{
+		c = ctable[x % BASE];
+		i++;
+		i += (rpu(x / BASE, BASE));
+		_putchar(c);
+	}
 	return (i);
 }
-
-int rpr(char *string)
-{
-	int i = 0;
-	if(*string == '\0')
-	{;
-		return(i);
-	}
-
-	string++;
-	i += (rpr(string));
-	string--;
-	_putchar(*string);
-	i++;
-
-	return(i);
-
-}
-

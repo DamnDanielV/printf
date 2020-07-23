@@ -40,4 +40,5 @@ int printHEX(va_list arguments);
 int printr(va_list arguments);
 int rpr(char *string);
 int printR(va_list arguments);
+int rpub(long int x, int BASE);
 #endif
