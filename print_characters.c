@@ -30,7 +30,7 @@ int print_str(va_list arguments)
 	if (string == NULL)
 	{
 		write(1, "(null)", 6);
-		return(6);
+		return (6);
 	}
 
 
@@ -68,7 +68,7 @@ int printS(va_list arguments)
 						write(1, &"0", 1);
 						i++;
 					}
-					i += (rpuu(*string, 16, 1));
+					i += (rpuH(*string, 16));
 					string++;
 				}
 				else

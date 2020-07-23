@@ -62,7 +62,7 @@ int printhex(va_list arguments)
 	int i = 0;
 	unsigned int x = va_arg(arguments, unsigned int);
 
-	i += ((x == 0) ? _putchar('0') : rpuu(x, 16, 0));
+	i += ((x == 0) ? _putchar('0') : rpuu(x, 16));
 	return (i);
 
 }
@@ -79,7 +79,7 @@ int printHEX(va_list arguments)
 	int i = 0;
 	unsigned int x = va_arg(arguments, unsigned int);
 
-	i += ((x == 0) ? _putchar('0') : rpuu(x, 16, 1));
+	i += ((x == 0) ? _putchar('0') : rpuH(x, 16));
 	return (i);
 
 }
@@ -92,7 +92,7 @@ int printHEX(va_list arguments)
 
 int printp(va_list arguments)
 {
-	int i = 0;
+	int i = 2;
 	unsigned long int addr = va_arg(arguments, unsigned long int);
 
 	_putchar('0');

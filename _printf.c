@@ -48,62 +48,30 @@ int c_n(const char *format, int *i, va_list arguments)
 	int c = 0;
 
 		func = match_parameter(format[*i + 1]);
-		if(func)
+		if (func)
 		{
 			c += func(arguments);
 			(*i) += 2;
 			return (c);
 		}
-		if (func == NULL && format[*i + 1] == ' ' && format[*i + 2] == '%')
-		{
-			_putchar(format[*i]);
-			c++;
-			(*i)+=3;
-			return (c);
-		}
-
-		if (func == NULL && format[*i + 1] != '%' && format[*i + 1] != ' ')
-		{
-			_putchar(format[*i]);
-			c++;
-			(*i)++;
-			return (c);
-		}
-		if (func == NULL && format[*i + 1] == '%' && format[*i+2] != '\0')
+		if (format[*i + 1] == '%' && format[*i + 2] != '\0')
 		{
 			_putchar('%');
 			c++;
 			(*i) += 2;
 			return (c);
 		}
-		if (func == NULL && format[*i + 1] == ' ')
-		{
-			func = match_parameter(format[*i + 2]);
-			if (func)
-			{
-				c += func(arguments);
-				(*i) += 3;
-				return (c);
-			}
-		}
-		if (func == NULL && format[*i + 1] == ' ' && format[*i + 2] == '%')
-		{
-			_putchar('%');
-			(*i) += 3;
-			c++;
- 			return (c);
-		}
-		if (func == NULL && format[*i +1] != '%' && format[*i + 1] != ' ')
+		if (format[*i + 1] != '%' && format[*i + 1] != ' ')
 		{
 			_putchar(format[*i]);
 			(*i)++;
-  			return (c);
+			return (c);
 		}
-		if (func == NULL && format[*i +1] != '%')
+		if (format[*i + 1] != '%')
 		{
-			_putchar(format[*i+1]);
+			_putchar(format[*i + 1]);
 			(*i)++;
-  			return (c);
+			return (c);
 		}
 		return (c);
 }

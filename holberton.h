@@ -33,12 +33,13 @@ int printb(va_list arguments);
 int print_ocunsi(va_list arguments);
 int printhex(va_list arguments);
 int printp(va_list arguments);
-int rpuu(unsigned int x, int BASE, int flag);
+int rpuu(unsigned int x, int BASE);
 int rpu(int x, int BASE);
 int rpup(unsigned long int x, int BASE);
 int printHEX(va_list arguments);
 int printr(va_list arguments);
 int rpr(char *string);
 int printR(va_list arguments);
-int rpub(long int x, int BASE);
+int rpub(unsigned long int x, int BASE);
+int rpuH(unsigned int x, int BASE);
 #endif
