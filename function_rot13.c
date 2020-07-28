@@ -7,7 +7,7 @@
  */
 int printR(va_list arguments)
 {
-	int i, j, z = 1;
+	int i, j, z = 0;
 	char c[] = {"aAbBcCdDeEfFgGhHiIjJkKlLmMnNoOpPqQrRsStTuUvVwWxXyYzZ"};
 	char num[] = {"nNoOpPqQrRsStTuUvVwWxXyYzZaAbBcCdDeEfFgGhHiIjJkKlLmMnN"};
 	char *s = va_arg(arguments, char *);
