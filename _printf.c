@@ -48,28 +48,34 @@ int c_n(const char *format, int *i, va_list arguments)
 	int (*func)(va_list);
 	int c = 0;
 
-		func = match_parameter(format[*i + 1]);
+	func = match_parameter(format[*i + 1]);
+	if (func == NULL && format[*i + 1] != '%' && format[*i + 1] != ' ')
+	{
+		_putchar(format[*i]);
+		c++;
+		(*i)++;
+	}
+	else if (func == NULL && format[*i + 1] == '%')
+	{
+		_putchar('%');
+		c++;
+		(*i) += 2;
+	}
+	else if (func == NULL && format[*i + 1] == ' ')
+	{
+		func = match_parameter(format[*i + 2]);
 		if (func)
 		{
 			c += func(arguments);
-			(*i) += 2;
-
+			(*i) += 3;
 		}
-		else if (format[*i + 1] == '%')
-		{
-			_putchar('%');
-			c++;
-			(*i) += 2;
-
-		}
-		else
-		{
-			_putchar(format[*i]);
-			_putchar(format[*i + 1]);
-			(*i) += 2;
-		}
-
-		return (c);
+	}
+	else
+	{
+		c += func(arguments);
+		(*i) += 2;
+	}
+	return (c);
 }
 
 /**
