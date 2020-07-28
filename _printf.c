@@ -18,16 +18,18 @@ int _printf(const char *format, ...)
 
 	while (format[i] != '\0')
 	{
+		if (format[i] == '%' && format[i + 1] == '\0')
+			return (-1);
+
 		if (format[i] == '%' && format[i + 1] != '\0')
 			c += c_n(format, &i, arguments);
-		else if (format[i] == '%' && format[i + 1] == '\0')
-			return (-1);
-		else if
+		else
 		{
 			_putchar(format[i]);
 			c++;
 			i++;
 		}
+
 
 	}
 	va_end(arguments);

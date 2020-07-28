@@ -95,7 +95,7 @@ int printp(va_list arguments)
 	int i = 0;
 	unsigned long int addr = va_arg(arguments, unsigned long int);
 
-	if (addr == NULL)
+	if (addr == 0)
 	{
 		write(1, "0x0(nil)", 8);
 		return (8);
