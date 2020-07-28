@@ -92,11 +92,19 @@ int printHEX(va_list arguments)
 
 int printp(va_list arguments)
 {
-	int i = 2;
+	int i = 0;
 	unsigned long int addr = va_arg(arguments, unsigned long int);
 
+	if (addr == NULL)
+	{
+		write(1, "0x0(nil)", 8);
+		return (8);
+	}
+
 	_putchar('0');
+	i++;
 	_putchar('x');
+	i++;
 	i += ((addr == 0) ? write(1, "(null)", 6) : rpup(addr, 16));
 	return (i);
 }

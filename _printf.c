@@ -22,8 +22,7 @@ int _printf(const char *format, ...)
 			c += c_n(format, &i, arguments);
 		else if (format[i] == '%' && format[i + 1] == '\0')
 			return (-1);
-
-		else
+		else if
 		{
 			_putchar(format[i]);
 			c++;
@@ -52,27 +51,22 @@ int c_n(const char *format, int *i, va_list arguments)
 		{
 			c += func(arguments);
 			(*i) += 2;
-			return (c);
+
 		}
-		if (format[*i + 1] == '%' && format[*i + 2] != '\0')
+		else if (format[*i + 1] == '%')
 		{
 			_putchar('%');
 			c++;
 			(*i) += 2;
-			return (c);
+
 		}
-		if (format[*i + 1] != '%' && format[*i + 1] != ' ')
+		else
 		{
 			_putchar(format[*i]);
-			(*i)++;
-			return (c);
-		}
-		if (format[*i + 1] != '%')
-		{
 			_putchar(format[*i + 1]);
-			(*i)++;
-			return (c);
+			(*i) += 2;
 		}
+
 		return (c);
 }
 

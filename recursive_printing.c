@@ -34,7 +34,6 @@ int rpu(int x, int BASE)
  *rpuH - recursive printing unsigned hexadecimal.
  *@x: unsigned int number to print
  *@BASE: base for the printing
- *@flag: flag to print hexas in uppercase or not
  *Return: Number of  printed numbers.
 */
 int rpuH(unsigned int x, int BASE)
@@ -96,9 +95,6 @@ int rpub(unsigned long int  x, int BASE)
 		i += (rpub(x / BASE, BASE));
 		_putchar(c);
 	}
-	if (x > UINT_MAX)
-		_putchar('0');
-	i++;
 	return (i);
 }
 
@@ -106,7 +102,6 @@ int rpub(unsigned long int  x, int BASE)
  *rpuu - recursive printing unsigned hexadecimal upper.
  *@x: unsigned int number to print
  *@BASE: base for the printing
- *@flag: flag to print hexas in uppercase or not
  *Return: Number of  printed numbers.
 */
 
@@ -114,7 +109,7 @@ int rpuu(unsigned int x, int BASE)
 {
 	char c;
 	int i = 0;
-	char ct[]= {"0123456789abcdef"};
+	char ct[] = {"0123456789abcdef"};
 
 	if (x)
 	{
@@ -123,6 +118,11 @@ int rpuu(unsigned int x, int BASE)
 		i += rpuu(x / BASE, BASE);
 		_putchar(c);
 	}
+	if (x > UINT_MAX)
+	{
+		i++;
+		_putchar('0');
+	}
+
 	return (i);
 }
-
